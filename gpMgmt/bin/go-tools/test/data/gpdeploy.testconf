@@ -1,0 +1,45 @@
+{
+  "artefact": {
+    "greenplum": "/tpm/rpms/gpdb.rpm",
+    "dependencyList": ["/tpm/rpms/rpm-1.rpm", "/tpm/rpms/rpm-2.rpm"]
+  },
+  "database": {
+    "deploymentType": "mirrorless",
+    "admin": {
+      "name": "gpadmin",
+      "password": "asdfqwsfd"
+    },
+    "segmentsPerSegmentHost": 3
+  },
+  "infra": {
+    "auth": {
+      "type": "password",
+      "password": "asdfasdf"
+    },
+    "coordinator": {
+      "network": {
+        "externalAddress": "10.100.10.100",
+        "internalAddress": "192.168.100.250"
+      },
+      "hostname": "cdw",
+      "auth": {
+        "type": "password",
+        "password": "dssdfwef"
+      }
+    },
+    "segmentHosts": [
+      {
+        "network": {
+          "internalAddress": "192.168.100.1"
+        },
+        "hostname": "sdw1"
+      },
+      {
+        "network": {
+          "internalAddress": "192.168.100.2"
+        },
+        "hostname": "sdw2"
+      }
+    ]
+  }
+}
