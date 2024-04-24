@@ -1,7 +1,10 @@
 {
-  "artefact": {
+  "artefacts": {
     "greenplum": "/tpm/rpms/gpdb.rpm",
-    "dependencyList": ["/tpm/rpms/rpm-1.rpm", "/tpm/rpms/rpm-2.rpm"]
+    "dependencyList": [
+      "/tpm/rpms/rpm-1.rpm",
+      "/tpm/rpms/rpm-2.rpm"
+    ]
   },
   "database": {
     "deploymentType": "mirrored",
@@ -12,36 +15,51 @@
     "segmentsPerSegmentHost": 3
   },
   "infra": {
-    "requestPort": 5001,
-    "publishPort": 5002,
-    "auth": {
-      "type": "password",
-      "password": "asdfasdf"
-    },
-    "coordinator": {
+    "requestPort": 4506,
+    "publishPort": 4505,
+    "coordinatorHost": {
       "network": {
-        "externalAddress": "10.100.10.100",
-        "internalAddress": "192.168.100.250"
+        "externalIp": "10.202.89.100",
+        "internalIp": "192.168.100.250"
       },
       "hostname": "cdw",
-      "auth": {
+      "domainName": "example.com",
+      "authentication": {
         "type": "password",
         "password": "dssdfwef"
       }
     },
-    "segmentHosts": [
-      {
-        "network": {
-          "internalAddress": "192.168.100.1"
-        },
-        "hostname": "sdw1"
+    "standbyHost": {
+      "network": {
+        "externalIp": "10.202.89.100",
+        "internalIp": "192.168.100.250"
       },
-      {
-        "network": {
-          "internalAddress": "192.168.100.2"
-        },
-        "hostname": "sdw2"
+      "hostname": "custom-name",
+      "domainName": "example.com",
+      "authentication": {
+        "type": "password",
+        "password": "dssdfwef"
       }
-    ]
+    },
+    "segmentHost": {
+      "segmentHostCount": 10,
+      "network": {
+        "internalCidr": "192.168.100.1/24",
+        "ipRange": {
+          "first": "192.168.100.1",
+          "last": "192.168.100.25"
+        },
+        "ipList": [
+          "192.168.100.1",
+          "192.168.100.2"
+        ]
+      },
+      "authentication": {
+        "type": "password",
+        "password": "asdfasdf"
+      },
+      "hostnamePrefix": "custom",
+      "domainName": "example.com"
+    }
   }
 }
